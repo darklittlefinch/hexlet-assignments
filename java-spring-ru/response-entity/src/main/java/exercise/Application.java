@@ -42,13 +42,13 @@ public class Application {
         var post = posts.stream()
                 .filter(value -> value.getId().equals(id))
                 .findFirst();
-        return post.isPresent() ? ResponseEntity.of(post) : ResponseEntity.notFound().build();
+        return ResponseEntity.of(post);
     }
 
     @PostMapping("/posts")
     public ResponseEntity<Post> create(@RequestBody Post post) {
         posts.add(post);
-        return ResponseEntity.created(URI.create("/posts/" + post.getId())).body(post);
+        return ResponseEntity.created(URI.create("/posts")).body(post);
     }
 
     @PutMapping("/posts/{id}")
