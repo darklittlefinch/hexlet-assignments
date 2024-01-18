@@ -25,11 +25,11 @@ class App {
             try {
                 inputContent = Files.readString(inputPath1);
             } catch (IOException ex) {
-                throw new RuntimeException();
+                throw new RuntimeException(ex);
             }
             return inputContent;
         }).exceptionally(ex -> {
-            System.out.println("ERROR: NoSuchFileException");
+            System.out.println("ERROR: " + ex.getMessage());
             return "Something went wrong :(";
         });
 
@@ -39,11 +39,11 @@ class App {
             try {
                 inputContent = Files.readString(inputPath2);
             } catch (IOException ex) {
-                throw new RuntimeException();
+                throw new RuntimeException(ex);
             }
             return inputContent;
         }).exceptionally(ex -> {
-            System.out.println("ERROR: NoSuchFileException");
+            System.out.println("ERROR: " + ex.getMessage());
             return "Something went wrong :(";
         });
 
