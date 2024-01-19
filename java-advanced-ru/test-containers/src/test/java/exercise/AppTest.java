@@ -89,10 +89,10 @@ public class AppTest {
                 .andReturn()
                 .getResponse();
 
-        assertThat(response.getStatus()).isEqualTo(200);
-        assertThat(response.getContentType()).isEqualTo(MediaType.APPLICATION_JSON.toString());
-        assertThat(response.getContentAsString()).doesNotContain("Jackson", "Smith");
-        assertThat(response.getContentAsString()).doesNotContain("John", "Smith");
+        assertThat(showResponse.getStatus()).isEqualTo(200);
+        assertThat(showResponse.getContentType()).isEqualTo(MediaType.APPLICATION_JSON.toString());
+        assertThat(showResponse.getContentAsString()).contains("Jackson", "Smith");
+        assertThat(showResponse.getContentAsString()).doesNotContain("John", "Smith");
     }
 
     @Test
@@ -108,9 +108,9 @@ public class AppTest {
                 .andReturn()
                 .getResponse();
 
-        assertThat(response.getStatus()).isEqualTo(200);
-        assertThat(response.getContentType()).isEqualTo(MediaType.APPLICATION_JSON.toString());
-        assertThat(response.getContentAsString()).doesNotContain("John", "Smith");
+        assertThat(showResponse.getStatus()).isEqualTo(200);
+        assertThat(showResponse.getContentType()).isEqualTo(MediaType.APPLICATION_JSON.toString());
+        assertThat(showResponse.getContentAsString()).doesNotContain("John", "Smith");
     }
     // END
 
