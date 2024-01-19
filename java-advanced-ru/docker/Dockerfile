@@ -14,10 +14,10 @@ RUN mv gradle-${GRADLE_VERSION} ${GRADLE_HOME}
 
 ENV PATH=$PATH:$GRADLE_HOME/bin
 
-WORKDIR /docker
+WORKDIR /app
 
-COPY ./ .
+COPY ./app .
 
-RUN ./gradlew build
+CMD ["gradle", "bootRun"]
 
 EXPOSE 3000
