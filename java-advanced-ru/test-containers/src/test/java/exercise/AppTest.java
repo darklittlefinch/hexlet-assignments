@@ -77,7 +77,7 @@ public class AppTest {
     public void testUpdatePerson() throws Exception {
         var response = mockMvc.perform(patch("/people/1")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"firstName\": \"Jackson\"}")
+                        .content("{\"firstName\": \"Jackson\", \"lastName\": \"Bind\"}")
                 )
                 .andReturn()
                 .getResponse();
@@ -91,7 +91,7 @@ public class AppTest {
 
         assertThat(showResponse.getStatus()).isEqualTo(200);
         assertThat(showResponse.getContentType()).isEqualTo(MediaType.APPLICATION_JSON.toString());
-        assertThat(showResponse.getContentAsString()).contains("Jackson", "Smith");
+        assertThat(showResponse.getContentAsString()).contains("Jackson", "Bind");
         assertThat(showResponse.getContentAsString()).doesNotContain("John", "Smith");
     }
 
